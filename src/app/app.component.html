@@ -1,0 +1,73 @@
+<div class="container-box">
+  <!-- Logo -->
+  <h1 class="pt-5 pb-3">Logo</h1>
+  <div>
+    <img src="assets\logo-icon.png" id="logo-icon" class="image">
+  </div>
+  <div class="Uploaded-image-container">
+    <button class="button" onclick="document.getElementById('Uploaded-image').click()">Upload Image</button>
+    <input type='file' id="Uploaded-image" (change)="showPreview($event);" style="display:none">
+  </div>
+
+  <!-- Sensitivity -->
+  <h1 class="pt-5">Sensitivity</h1>
+  <div>
+    <input class="w-50" [disabled]="Sensitivity" type="range" id="cowbell" name="cowbell" min="1" max="3" value="1"
+      step="1">
+    <div class="flex3 w-50">
+      <div class="flex-items">Low</div>
+      <div class="flex-items">Medium</div>
+      <div class="flex-items">High</div>
+    </div>
+  </div>
+  <!-- TimeSelector -->
+  <h1 class="pt-5">TimeSelector</h1>
+  <div class="timer-box">
+    <div class="text-center">
+      <input type="number" [(ngModel)]="Days" id="quantity" min="1" max="30" value="0">:<input [(ngModel)]="Hours"
+        type="number" id="quantity" min="0" max="23">:<input [(ngModel)]="Minutes" type="number" id="quantity" min="0"
+        max="59">
+    </div>
+    <div class="timer-flex3">
+      <div class="timer-flex-items">Days</div>
+      <div class="timer-flex-items">Hours</div>
+      <div class="timer-flex-items">Minutes</div>
+    </div>
+  </div>
+  <!-- Analyze Image -->
+  <div>
+    <button class="button" (click)="analyize()">Analyze Image</button>
+    <div class="container">
+      <div class="row">
+        <div class="col-6">
+          <h1 class="text-center">Original Image </h1>
+          <div class="card">
+            <img id="original" class="card" src="">
+          </div>
+        </div>
+        <div class="col-6">
+          <h1 class="text-center">Analyzed Image</h1>
+          <div class="card">
+            <img id="analyzed" class="card" src="">
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Table -->
+  <h1 class="pt-5">Table</h1>
+  <div class="table-container">
+    <table style="width:80%">
+      <tr>
+        <th>File name</th>
+        <td *ngIf="isShown">{{fileName}}</td>
+        <td *ngIf="isHide">Name of the uploaded file</td>
+      </tr>
+      <tr>
+        <th>Time</th>
+        <td *ngIf="isShown">{{Days+' Days '+Hours+' Hours '+Minutes+' Minutes'}}</td>
+        <td *ngIf="isHide">time selected in the counter above</td>
+      </tr>
+    </table>
+  </div>
+</div>
